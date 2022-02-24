@@ -7,7 +7,7 @@ import useFetch from '../../Hooks/useFetch/useFetch';
 import Loading from '../../components/Loading';
 import JobCard from '../../components/JobCard/JobCard';
 import Error from '../../components/Error';
-import PageButton from '../../components/PageButton/PageButton';
+import ButtonwIcon from '../../components/ButtonwIcon';
 
 const JobPage = ({navigation}) => {
   const [page, setPage] = useState(88);
@@ -17,22 +17,22 @@ const JobPage = ({navigation}) => {
     page;
   }, []);
   const renderCard = ({item}) => {
-    return <JobCard job={item} onPress={() => goDetails(item.id)} />;
+    return <JobCard job={item} onPress={() => goDetails(item.id, item.name)} />;
   };
-  function goDetails(id) {
-    navigation.navigate('DetailPage', {id});
+  function goDetails(id, name) {
+    navigation.navigate('DetailPage', {id, name});
   }
   const Footer = () => {
     return (
       <View style={styles.footer_container}>
-        <PageButton
-          name="arrow-left-circle-outline"
-          onPress={() => goPreviusPage()}
+        <ButtonwIcon
+          name="arrow-left-bold-outline"
+          iconPress={() => goPreviusPage()}
         />
-        <PageButton name="heart-circle" onPress={() => goFavorites()} />
-        <PageButton
-          name="arrow-right-circle-outline"
-          onPress={() => goNextPage()}
+        <ButtonwIcon name="heart-circle" iconPress={() => goFavorites()} />
+        <ButtonwIcon
+          name="arrow-right-bold-outline"
+          iconPress={() => goNextPage()}
         />
       </View>
     );

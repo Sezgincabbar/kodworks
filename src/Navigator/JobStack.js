@@ -17,10 +17,10 @@ const JobStack = () => {
       <Stack.Screen
         name="DetailPage"
         component={Detail}
-        options={{
+        options={({route}) => ({
           headerTintColor: '#ef534f',
-          title: 'Job Details',
-        }}
+          title: route.params.name,
+        })}
       />
     </Stack.Navigator>
   );
